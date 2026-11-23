@@ -1,0 +1,29 @@
+{
+    "name": "boggle/web",
+    "description": "Site web du Boggle - SAE S3 BUT2",
+    "type": "project",
+    "require": {
+        "php": ">=8.1",
+        "phpmailer/phpmailer": "^7.0"
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/PHPMailer/PHPMailer.git"
+        },
+        {
+            "packagist.org": false
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": [
+            "src/fonctions.php"
+        ]
+    },
+    "config": {
+        "preferred-install": "source"
+    }
+}

@@ -1,0 +1,368 @@
+:root {
+    --bleu: #1f3a5f;
+    --bleu-clair: #e8eef6;
+    --orange: #e36414;
+    --orange-fonce: #b94f0e;
+    --de: #fbf3e1;
+    --de-bord: #d9c9a3;
+    --texte: #1b1b1b;
+    --gris: #5c6470;
+    --rouge: #b3261e;
+    --vert: #1e6b3a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--texte);
+    background: var(--bleu-clair);
+    line-height: 1.5;
+}
+
+a {
+    color: var(--bleu);
+}
+
+h1, h2 {
+    line-height: 1.2;
+    color: var(--bleu);
+}
+
+/* en-tete et logo en des */
+.entete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0.8rem 1.5rem;
+    background: var(--bleu);
+    color: white;
+}
+
+.logo {
+    display: flex;
+    gap: 0.3rem;
+    text-decoration: none;
+}
+
+.logo .de {
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 1.3rem;
+}
+
+.logo .de:nth-child(odd) {
+    transform: rotate(-6deg);
+}
+
+.logo .de:nth-child(even) {
+    transform: rotate(5deg);
+}
+
+.compte {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.compte form {
+    margin: 0;
+}
+
+.de {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--de);
+    border: 2px solid var(--de-bord);
+    border-radius: 0.5rem;
+    box-shadow: 0 3px 0 var(--de-bord);
+    color: var(--bleu);
+    font-weight: 800;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* page */
+.contenu {
+    flex: 1;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.pied {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--gris);
+}
+
+/* accueil */
+.accueil {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+.presentation h1 {
+    margin-top: 0;
+    font-size: 2rem;
+}
+
+.grille {
+    display: grid;
+    grid-template-columns: repeat(4, 4rem);
+    gap: 0.5rem;
+    margin: 1.5rem 0 0.5rem;
+    padding: 0.8rem;
+    width: max-content;
+    background: var(--bleu);
+    border-radius: 0.8rem;
+}
+
+.grille .de {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.8rem;
+}
+
+.grille .de-chemin {
+    background: var(--orange);
+    border-color: var(--orange-fonce);
+    box-shadow: 0 3px 0 var(--orange-fonce);
+    color: white;
+}
+
+.legende {
+    font-size: 0.9rem;
+    color: var(--gris);
+}
+
+/* cartes et formulaires */
+.carte {
+    max-width: 26rem;
+    margin: 0 auto;
+    padding: 1.8rem;
+    background: white;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 18px rgba(31, 58, 95, 0.12);
+}
+
+.carte-large {
+    max-width: 38rem;
+}
+
+.carte h1, .carte h2 {
+    margin-top: 0;
+}
+
+label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+    margin-top: 0.3rem;
+    padding: 0.6rem 0.7rem;
+    font: inherit;
+    border: 1px solid #b8c2cf;
+    border-radius: 0.4rem;
+}
+
+input:focus-visible, button:focus-visible, a:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 2px;
+}
+
+.case {
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+    margin-top: 1.2rem;
+}
+
+.case input {
+    margin-top: 0.3rem;
+}
+
+.case label {
+    margin: 0;
+    font-weight: normal;
+}
+
+.aide {
+    margin: 0.3rem 0 0;
+    font-size: 0.85rem;
+    color: var(--gris);
+}
+
+.facultatif {
+    font-weight: normal;
+    color: var(--gris);
+}
+
+.liens {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.separation {
+    margin: 1.5rem 0 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e6ec;
+    color: var(--gris);
+}
+
+/* boutons */
+.bouton {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.7rem 1.2rem;
+    font: inherit;
+    font-weight: 700;
+    color: white;
+    background: var(--orange);
+    border: none;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bouton:hover {
+    background: var(--orange-fonce);
+}
+
+.bouton:disabled {
+    background: #c9ced6;
+    cursor: not-allowed;
+}
+
+.bouton-secondaire {
+    margin-top: 0;
+    color: var(--bleu);
+    background: var(--bleu-clair);
+}
+
+.bouton-secondaire:hover {
+    background: #d3deeb;
+}
+
+.bouton-discret {
+    margin: 0;
+    padding: 0.4rem 0.8rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.bouton-discret:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.bouton-petit {
+    margin: 0;
+    padding: 0.35rem 0.8rem;
+    font-size: 0.9rem;
+}
+
+/* messages */
+.flash {
+    margin: 0 0 1.5rem;
+    padding: 0.8rem 1rem;
+    border-radius: 0.4rem;
+    background: #e4f1e8;
+    color: var(--vert);
+    border-left: 4px solid var(--vert);
+}
+
+.flash-erreur {
+    background: #fbe9e7;
+    color: var(--rouge);
+    border-left-color: var(--rouge);
+}
+
+.flash ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+
+/* page des parties */
+.titre-page {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.titre-page h1, .titre-page .bouton {
+    margin: 0;
+}
+
+.tableau {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 0.6rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(31, 58, 95, 0.08);
+}
+
+.tableau th, .tableau td {
+    padding: 0.7rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e6ec;
+}
+
+.tableau th {
+    background: var(--bleu);
+    color: white;
+    font-weight: 600;
+}
+
+.statut {
+    padding: 0.15rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.85rem;
+    background: var(--bleu-clair);
+}
+
+section + section {
+    margin-top: 2rem;
+}
+
+.texte h2 {
+    margin-top: 1.5rem;
+    font-size: 1.15rem;
+}
+
+@media (max-width: 760px) {
+    .accueil {
+        grid-template-columns: 1fr;
+    }
+
+    .grille {
+        grid-template-columns: repeat(4, 3.2rem);
+    }
+
+    .grille .de {
+        width: 3.2rem;
+        height: 3.2rem;
+        font-size: 1.4rem;
+    }
+
+    .tableau th, .tableau td {
+        padding: 0.5rem;
+    }
+}

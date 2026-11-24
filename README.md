@@ -55,7 +55,7 @@ Toutes dans `.env.example`. Aucune n'est dans le dépôt : en local elles sont d
 | `DB_HOST`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD`, `DB_SSLMODE` | connexion PostgreSQL avec le rôle `boggle_web` |
 | `CLE` | clé de chiffrement des emails et du hmac (`openssl rand -hex 32`) |
 | `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_SECURE`, `MAIL_FROM` | envoi des emails |
-| `DERRIERE_PROXY` | `oui` sur Render, pour lire la vraie IP dans `X-Forwarded-For` |
+| `DERRIERE_PROXY` | `oui` sur Render : la vraie IP est lue dans `CF-Connecting-IP` (Render passe par Cloudflare) |
 
 ## Déploiement
 

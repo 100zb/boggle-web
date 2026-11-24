@@ -34,17 +34,14 @@ abstract class Controller
         return is_string($valeur) ? $valeur : '';
     }
 
-    // derriere le proxy de Render, la vraie ip est la derniere ajoutee dans X-Forwarded-For
+    // Render passe par Cloudflare : REMOTE_ADDR vaut ::1 pour tout le monde.
+    // CF-Connecting-IP est rempli par Cloudflare (un client ne peut pas l'imposer),
+    // alors que X-Forwarded-For peut etre invente par le client
     protected function ip(): string
     {
-        $transmis = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
-        if (Config::get('DEBUG_IP') === 'oui') {
-            error_log('DEBUG_IP xff=' . $transmis . ' cf=' . ($_SERVER['HTTP_CF_CONNECTING_IP'] ?? '-')
-                . ' true=' . ($_SERVER['HTTP_TRUE_CLIENT_IP'] ?? '-') . ' remote=' . ($_SERVER['REMOTE_ADDR'] ?? '-'));
-        }
-        if (Config::get('DERRIERE_PROXY') === 'oui' && $transmis !== '') {
-            $ips = explode(',', $transmis);
-            return trim(end($ips));
+        $cloudflare = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? '';
+        if (Config::get('DERRIERE_PROXY') === 'oui' && $cloudflare !== '') {
+            return $cloudflare;
         }
         return $_SERVER['REMOTE_ADDR'] ?? '';
     }

@@ -4,6 +4,7 @@ namespace App;
 
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
 class Mailer
 {
@@ -18,6 +19,12 @@ class Mailer
             $mail->Username = Config::get('SMTP_USER');
             $mail->Password = Config::get('SMTP_PASS');
             $mail->Timeout = 10;
+
+            // SMTP_DEBUG=oui : echange avec le serveur dans le journal (identifiants masques par PHPMailer)
+            if (Config::get('SMTP_DEBUG') === 'oui') {
+                $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+                $mail->Debugoutput = 'error_log';
+            }
 
             $chiffrement = Config::get('SMTP_SECURE', 'tls');
             if ($chiffrement === 'ssl') {

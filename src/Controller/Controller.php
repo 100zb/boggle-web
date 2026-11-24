@@ -38,6 +38,10 @@ abstract class Controller
     protected function ip(): string
     {
         $transmis = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? '';
+        if (Config::get('DEBUG_IP') === 'oui') {
+            error_log('DEBUG_IP xff=' . $transmis . ' cf=' . ($_SERVER['HTTP_CF_CONNECTING_IP'] ?? '-')
+                . ' true=' . ($_SERVER['HTTP_TRUE_CLIENT_IP'] ?? '-') . ' remote=' . ($_SERVER['REMOTE_ADDR'] ?? '-'));
+        }
         if (Config::get('DERRIERE_PROXY') === 'oui' && $transmis !== '') {
             $ips = explode(',', $transmis);
             return trim(end($ips));
